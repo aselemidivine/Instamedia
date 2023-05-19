@@ -1,0 +1,8 @@
+
+// With this, we can easily import from the src folder
+{
+    "compilerOptions": {
+        "baseUrl": "src"
+    },
+    "include": ["src"]
+}

@@ -9,7 +9,6 @@ router.get("/", verifyToken, getFeedPosts); // Grab the user feeds, when we are 
 router.get("/:userId/posts", verifyToken, getUserPosts);
 
 
-
 // UPDATE
 router.patch("/:id/like", verifyToken, likePost);
 
