@@ -8,9 +8,11 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path"; // This comes with node so it doesnt have to be installed.
 import { fileURLToPath } from "url";
-import authRoutes from "./routes/auth.js";
+// import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
+import postRoutes from "./routes/posts.js";
 import register  from "./controller/auth.js";
+import { createPost } from "./controller/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 
 // CONFIGURATION
@@ -45,10 +47,13 @@ const upload = multer({ storage });
 // ROUTES WITH FILES
 //upload the picture locally with this middleware function.
 app.post("/auth/register", upload.single("picture"), register); // The register is called the controller and it is the logic for that endpoint.
+app.post("/post", verifyToken, upload.single("picture"), createPost);
+
 
 // ROUTES
-app.use("/auth", authRoutes);
+// app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
 
 
 

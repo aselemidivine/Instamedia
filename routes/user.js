@@ -10,6 +10,6 @@ router.get("/:id", verifyToken, getUser); // We can use a query string to grab a
 router.get("/:id/firends", verifyToken, getUserFriends);
 
 // UPDATE
-router.patch("/:id/friendId", verifyToken, addRemoveFriend);
+router.patch("/:id/:friendId", verifyToken, addRemoveFriend);
 
 export default router;
